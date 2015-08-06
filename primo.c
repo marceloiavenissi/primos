@@ -9,19 +9,19 @@
 #include <stdlib.h>
 
 int primoate() {
-	int numf, num, i, p, n;
+	int numf, numd, num, i, p, n;
 
 	n = 0;
 
-	printf(
-			"\n--------< Imprimir Numeros Primos ate: >--------\n\nDigite um Numero: ");
+	printf("\n--------< Print prime numbers: >--------\n\nEnter numbers: ");
 	scanf("%d", &numf);
 
 	for (num = 1; num <= numf; num++) {
 		p = 0;
+		numd=num/2;
 
 		i = 2;
-		while (i < num) {
+		while (i < numd) {
 			if ((num % (i)) == 0) {
 				p = 1;
 				break;
@@ -34,31 +34,33 @@ int primoate() {
 			n++;
 		}
 	}
-	printf("\nExistem %d Numeros Primos de 0 a %d\n", n, numf);
+	printf("\nthere are %d prime numbers from 0 to %d\n", n, numf);
 	numf = num = i = p = n = 0;
 
 	return 0;
 }
 
 int verificaprimo() {
-	int num, i, p;
+	int num, numd, i, p;
 
-	printf("\n--------< Verificar se Numero e Primo: >--------\n\nDigite um Numero: ");
+	printf("\n--------<check whether a number is prime: >--------\n\nEnter a number: ");
 
 	scanf("%d", &num);
-	i = 1;
-	while (++i < num) {
-		printf("divisor -> %d  numero -> %d  sobra -> %d\n", i, num, num % (i));
+	numd=num/2;
+	i = 2;
+	while (i < numd) {
+		printf("divider -> %d  number -> %d  remainder -> %d\n", i, num, num % (i));
 		if ((num % (i)) == 0) {
 			p = 1;
 			break;
 		}
+		i++;
 	}
 
 	if (p != 1)
-		printf("Numero %d e Primo\n", num);
+		printf("Number %d is prime\n", num);
 	else
-		printf("Numero %d Nao e Primo\n", num);
+		printf("Number %d is not prime\n", num);
 	num = i = p = 0;
 	return 0;
 }
@@ -76,12 +78,12 @@ int main() {
 	char t = '\n';
 	while (1 == 1) {
 
-		printf("\nDigite \"i\" para Imprimir Numeros Primo ou \"v\" para Verificar se um Numero e Primo \"e\" para Encerra a Aplicação: ");
+		printf("\nEnter \"p\" to print prime numbers or \"v\" to verify that a number is prime \"q\" to quit the application: ");
 
 		limparscanf(t);
 		scanf("%c", &t);
 
-		if (t == 'i' || t == 'I'){
+		if (t == 'p' || t == 'P'){
 			limparscanf(t);
 			primoate();
 		}
@@ -91,15 +93,15 @@ int main() {
 		}
 		else if (t == '\n') //quando o usuário digitar somente enter, para evitar que execute o else de opção invalida
 			t = '\n';
-		else if (t == 'e' || t == 'E')
+		else if (t == 'q' || t == 'Q')
 			break;
 		else {
-			printf("\n::::::::::::< Opis.. Opicao \"%c\" invalida!! >:::::::::::::\n",t);
+			printf("\n::::::::::::< \"%c\" is an invalid option!! >:::::::::::::\n",t);
 		}
 
 	}
 
-	printf("\n............: Ate logo!! :............\n\n");
+	printf("\n............: See You Later!! :............\n\n");
 
 	return 0;
 }
